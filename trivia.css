@@ -1,11 +1,39 @@
+
+body {
+  background-color: rgb(244,52,64);
+}
+
 header {
   margin: 0 auto;
   text-align: center;
 }
+header h1{
+  color: black;
+  font-size: 70px;
+
+}
+
 .categories {
   text-align: center;
 }
 .categories button {
   display: inline-block;
 
+}
+.question {
+  text-align: center;
+  color: red;
+  padding-top: 20px;
+}
+.input {
+  margin-left: 5px;
+}
+p {
+  white-space: pre;
+}
+#scoreBox {
+  float:right;
+  margin: 0 0 0 0;
+  font-size: 34pt;
+  color: black;
 }
