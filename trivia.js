@@ -30,8 +30,8 @@ $("#movies").on("click", movieCategory);
     // $(".question").html(movieQuestions[0] +
     //   "<input class='input' id='input' type='text' placeholer='enter an amount' />" +
     //   "<button class='input' id='submit'>Submit</button>");
-    $(".question").append("<h2>Name the movie from the quote provided</h2>");
-    $(".question").append("<div id='scoreBox'>0/10</div>")
+    $(".question").append("<div id='scoreBox'>"+userScore+"/10"+"</div>")
+    $(".question").append("<h2>Directions: name the movie from the quote provided</h2>");
     $(".question").append("<p></p>");
     $(".question").append(movieQuestions[i]);
     $(".question").append("<p></p>");
@@ -44,9 +44,11 @@ $("#movies").on("click", movieCategory);
       i++;
       $(".question").empty();
       userScore++;   //SCORING DOES NOT WORK
-      $(".question #scoreBox").html(userScore + "/10");
+      userScore = toString(userScore);
+      //$("#scoreBox").html(userScore + "/10");
+      //userScore = parseInt(userScore);
 
-        if (i < movieQuestions.length){  // this also does not work
+        if (i < movieQuestions.length){
           movieCategory();
         }
         else {
