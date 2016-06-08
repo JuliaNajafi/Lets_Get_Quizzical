@@ -43,14 +43,39 @@ $(document).ready(function(){
   "The Great Firewall", "Merrick Garland", "The Panama Papers", "Zika", "Prince",
   "Saudi Arabia", "Peter Thiel"]
 
+  // refers to all category buttons generally
+  var categoryButton = $(".categories button");
 
+  //for timing countdown
+  var timerId;
+  var seconds = 30;
+  var timerIsAlreadyRunning = false;
+
+
+  //for scoring on each question
   var userScore =0;
   var i =0;
+
+  //start the timer
+  categoryButton.on("click", startTimer);
+
 
   $("#movies").on("click", movieCategory);
   function movieCategory (){
     $(".question").empty();
     appendMovieQuestion();
+    stopTimer();
+    startTimer();
+
+    $(".question #next").on("click", function(){
+      console.log("next was pressed!");
+      i++;
+      $(".question").empty();
+      movieCategory();
+      seconds = 30;
+      stopTimer();
+      startTimer();
+    })
 
     $("#submit").on("click", function(){
       var userAnswer = $(".input").val();
@@ -61,9 +86,13 @@ $(document).ready(function(){
 
         if (i < movieQuestions.length){
           movieCategory();
+          stopTimer();
+          startTimer();
         }
         else {
-          alert("end of movie quiz");
+          $(".question").empty();
+          $(".question").append("<h2>You have reached the end of this quiz!</p>");
+          $(".question").append("<p2> Your Score: "+ userScore + "/10</p2>");
           i= 0;
           userScore= 0;
         }
@@ -76,9 +105,13 @@ $(document).ready(function(){
           i++;
           $(".question").empty();
           movieCategory();
+          stopTimer();
+          startTimer();
         })
       } // end of else statement
     }) //end of submit function
+
+
   } // end of function movieCategory
 
   //if geo was clicked
@@ -86,6 +119,8 @@ $(document).ready(function(){
   function geoCategory (){
     $(".question").empty();
     appendGeoQuestions();
+    stopTimer();
+    startTimer();
 
     $("#submit").on("click", function(){
       var userAnswer = $(".input").val();
@@ -96,6 +131,8 @@ $(document).ready(function(){
 
         if (i < geoQuestions.length){
           geoCategory();
+          stopTimer();
+          startTimer();
         }
         else {
           alert("end of geography quiz");
@@ -111,6 +148,8 @@ $(document).ready(function(){
           i++;
           $(".question").empty();
           geoCategory();
+          stopTimer();
+          startTimer();
         })
       } // end of else statement
     }) //end of submit function
@@ -122,6 +161,8 @@ $(document).ready(function(){
   function newsCategory (){
     $(".question").empty();
     appendNewsQuestions();
+    stopTimer();
+    startTimer();
 
     $("#submit").on("click", function(){
       var userAnswer = $(".input").val();
@@ -132,6 +173,8 @@ $(document).ready(function(){
 
         if (i < newsQuestions.length){
           newsCategory();
+          stopTimer();
+          startTimer();
         }
         else {
           alert("end of quiz");
@@ -147,6 +190,8 @@ $(document).ready(function(){
           i++;
           $(".question").empty();
           newsCategory();
+          stopTimer();
+          startTimer();
         })
       } // end of else statement
     }) //end of submit function
@@ -155,7 +200,7 @@ $(document).ready(function(){
   //function append geo questions
   function appendGeoQuestions(){
     $(".question").append("<div class='scoreTime' id='scoreBox'>"+userScore+"/10"+"</div>")
-    $(".question").append("<div class='scoreTime' id='time'>1:00</div>");
+    $(".question").append("<div class='scoreTime' id='time'>30 s</div>");
     $(".question").append("<p></p>");
     $(".question").append("<h2>Directions: Write your answer in the space provided:</h2>");
     $(".question").append("<p></p>");
@@ -169,7 +214,8 @@ $(document).ready(function(){
   //function append movie questions
   function appendMovieQuestion(){
     $(".question").append("<div class='scoreTime' id='scoreBox'>"+userScore+"/10"+"</div>")
-    $(".question").append("<div class='scoreTime' id='time'>1:00</div>");
+    $(".question").append("<div class='scoreTime' id='time'>30 s</div>");
+    $(".question").append("<p></p>");
     $(".question").append("<p></p>");
     $(".question").append("<h2>Directions: name the movie from the quote provided</h2>");
     $(".question").append("<p></p>");
@@ -181,7 +227,7 @@ $(document).ready(function(){
 
   function appendNewsQuestions(){
     $(".question").append("<div class='scoreTime' id='scoreBox'>"+userScore+"/10"+"</div>")
-    $(".question").append("<div class='scoreTime' id='time'>1:00</div>");
+    $(".question").append("<div class='scoreTime' id='time'>30 s</div>");
     $(".question").append("<p></p>");
     $(".question").append("<h2>Directions: Write your answer in the space provided:</h2>");
     $(".question").append("<p></p>");
@@ -190,6 +236,37 @@ $(document).ready(function(){
     $(".question").append("<input class='input' id='input' type='text' />");
     $(".question").append("<button class='input' id='submit'>Submit</button>");
   }
+
+
+  var timerText = $("#timer");
+  // start timing function
+  function startTimer(){
+    if (timerIsAlreadyRunning == false){
+      timerId = setInterval(function(){
+      if (seconds > 0){
+        seconds -=1;
+        $("#time").text(" " + seconds + " s");
+      }
+      else {
+        console.log("timer run out!");
+        clearInterval(timerId);
+        $(".question").append("<p></p>");
+        $(".question").append("<button id='next'>next</button>");
+        alert("Sorry, you ran out of time, please press 'next' to proceed.");
+      }
+    }, 1000) //end of setInterval function
+    timerIsAlreadyRunning = true;
+    } //end of  if timerisRunning
+  } //end of stsrtTime function
+
+
+  //stop timing function
+  function stopTimer(){
+    clearInterval(timerId);
+    seconds = 30;
+    timerIsAlreadyRunning = false;
+  }
+
 
 
 

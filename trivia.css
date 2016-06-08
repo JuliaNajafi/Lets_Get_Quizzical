@@ -87,9 +87,22 @@ p {
 }
 .scoreTime {
   /*text-align: center;*/
-  /*margin: 0 0 0 0;*/
-  font-size: 34pt;
+  margin: 50px 10px 50px 10px;
+  font-size: 50pt;
   color: black;
 }
 #scoreBox{
+  float:right;
+  margin: 0 100px 0 0;
+}
+#time {
+  float:left;
+  margin: 0 0 0 100px;
+}
+
+
+
+
+h2 {
+  margin-top: 50px;
 }
