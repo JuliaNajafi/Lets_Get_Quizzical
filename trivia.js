@@ -2,8 +2,16 @@ $(document).ready(function(){
 
   var categories = {
     movies: [
-      {question: "(1) 'I love the smell of napalm in the morning'", answer: "Apocalypse Now" },
-      {question: "(2) 'I love the smell of napalm in the morning'", answer: "Apocalypse Now" }
+      {question: "(1) 'I love the smell of napalm in the morning'", answer: "apocalypse now" },
+      {question: "(2) 'A boy's best friend is his mother'", answer: "psycho" },
+    ],
+    geography: [
+      {question: "(1) In which country is the Blarney Stone?", answer: "ireland"},
+      {question: "(2) The city of Cairo in Egypt is generally accepted to have the oldest of what type of institution in the world?", answer: "university"},
+    ],
+    current: [
+      {question: "(1) What does ISIL stand for?", answer: "islamic state of iraq and the levant"},
+      {question: "(2) Who is the Green Party candidate for the upcoming U.S. presidential election?", answer:"jill stein"},
     ]
   }
 
@@ -63,7 +71,7 @@ $(document).ready(function(){
   var i =0;
 
   //start the timer
-  categoryButton.on("click", startTimer);
+  //categoryButton.on("click", startTimer);
 
 
   $(".categories button").on("click", categoryClick);
@@ -74,6 +82,34 @@ $(document).ready(function(){
     appendQuestion(category);
     stopTimer();
     startTimer();
+
+    function startTimer(){
+      if (timerIsAlreadyRunning == false){
+        timerId = setInterval(function(){
+        if (seconds > 0){
+          seconds -=1;
+          $("#time").text(" " + seconds + " s");
+        }
+        else {
+          console.log("timer ran out!");
+          seconds = 30;
+          clearInterval(timerId);
+          $(".question").append("<p></p>");
+          $(".question").append("<button id='skip'>Skip</button>");
+          alert("Sorry, you ran out of time, please press 'Skip' to proceed.");
+          $("#skip").on("click" , function(){
+            i++;
+            $(".question").empty();
+            $("#" + category).trigger("click");
+            stopTimer();
+            startTimer();
+          })
+        } //end of else statement
+      }, 1000) //end of setInterval function
+      timerIsAlreadyRunning = true;
+      } //end of  if timerisRunning
+    } //end of stsrtTime function
+
 
     $("#submit").on("click", function(){
       var userAnswer = $(".input").val();
@@ -114,9 +150,6 @@ $(document).ready(function(){
 
 
 
-
-
-
   //function append movie questions
   function appendQuestion(category){
     $(".question").append("<div class='scoreTime' id='scoreBox'>"+userScore+"/10"+"</div>")
@@ -135,24 +168,31 @@ $(document).ready(function(){
 
 
   // start timing function
-  function startTimer(){
-    if (timerIsAlreadyRunning == false){
-      timerId = setInterval(function(){
-      if (seconds > 0){
-        seconds -=1;
-        $("#time").text(" " + seconds + " s");
-      }
-      else {
-        console.log("timer run out!");
-        clearInterval(timerId);
-        $(".question").append("<p></p>");
-        $(".question").append("<button id='next'>next</button>");
-        alert("Sorry, you ran out of time, please press 'next' to proceed.");
-      } //end of else statement
-    }, 1000) //end of setInterval function
-    timerIsAlreadyRunning = true;
-    } //end of  if timerisRunning
-  } //end of stsrtTime function
+  // function startTimer(){
+  //   if (timerIsAlreadyRunning == false){
+  //     timerId = setInterval(function(){
+  //     if (seconds > 0){
+  //       seconds -=1;
+  //       $("#time").text(" " + seconds + " s");
+  //     }
+  //     else {
+  //       console.log("timer run out!");
+  //       clearInterval(timerId);
+  //       $(".question").append("<p></p>");
+  //       $(".question").append("<button id='skip'>Skip</button>");
+  //       alert("Sorry, you ran out of time, please press 'Skip' to proceed.");
+  //       $("#skip").on("click" , function(){
+  //         i++;
+  //         $(".question").empty();
+  //         $("#" + category).trigger("click");
+  //         stopTimer();
+  //         startTimer();
+  //       })
+  //     } //end of else statement
+  //   }, 1000) //end of setInterval function
+  //   timerIsAlreadyRunning = true;
+  //   } //end of  if timerisRunning
+  // } //end of stsrtTime function
 
 
   //stop timing function
