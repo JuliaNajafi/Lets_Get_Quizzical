@@ -1,4 +1,4 @@
 what I still need to do:
-  get the scoring to work
-  add functionality so if dont know answer, skips to next question
-  add scoring functionality 
+  add timing functionality
+  need to disable double clicking
+  if win a category, need some sort of animation that is congratulatory

@@ -85,9 +85,11 @@ button:hover span:after{
 p {
   white-space: pre;
 }
-#scoreBox {
-  float:right;
-  margin: 0 0 0 0;
+.scoreTime {
+  /*text-align: center;*/
+  /*margin: 0 0 0 0;*/
   font-size: 34pt;
   color: black;
+}
+#scoreBox{
 }
