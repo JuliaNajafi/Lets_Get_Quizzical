@@ -8,6 +8,8 @@
 
   </head>
   <body>
+    <!-- <img src="bandWmap.jpg" alt="map" /> -->
+    <div id="container">
     <header>
       <h1>Let's Get Quizzical</h1>
       <h2>
@@ -17,7 +19,12 @@
 
     <div class="categories">
       <h1>Categories</h1>
-      <button id="movies"><span>Movie</span></button>
+      <div class="directions">
+        <p2 id="directionMovie">Name the movie from the quote!</p2>
+        <p2 id="directionGeo">Type your answer in the space provided!</p2>
+        <p2 id="directionCurrent">Type your answer in the space provided!</p2>
+      </div>
+      <button id="movies"><span>Movies</span></button>
       <button id="geography"><span>Geography</span></button>
       <button id="current"><span>In The News</span></button>
       <button id="programming"><span>Programming</span></button>
@@ -35,5 +42,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="trivia.js"></script>
+  </div>
   </body>
 </html>

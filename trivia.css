@@ -1,6 +1,21 @@
 
 body {
+  background-image: url(bandWmap.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+#container {
+  width: 900px;
+  height: 1100px;
+  margin: 0 auto;
   background-color: rgb(244,52,64);
+  border-radius: 1%;
+  outline-color: grey;
+  margin-bottom: 0;
 }
 
 header {
@@ -15,14 +30,35 @@ header h1{
   border-bottom-width:medium;
   padding-bottom: 10px;
   margin-bottom: 0;
+  margin-top: 0;
   font-family: 'Lobster Two', cursive;
 }
 header h2{
   font-family: 'Lobster Two', cursive;
   font-size: 25px;
   margin-bottom: 0;
+  margin-top: 10px;
+}
+
+p2#directionMovie {
+  visibility: hidden;
+  font-family: cursive, 'Droid Serif', serif;
+  font-size: 18px;
 
 }
+
+p2#directionGeo {
+  visibility: hidden;
+  font-family: cursive, 'Droid Serif', serif;
+  font-size: 18px;
+}
+
+p2#directionCurrent{
+  visibility:hidden;
+  font-family: cursive, 'Droid Serif', serif;
+  font-size: 18px;
+}
+
 
 
 .categories {
@@ -46,6 +82,10 @@ header h2{
   font-size: 18px;
   font-weight: bold;
   transition: all 0.5s;
+  transition: active .2s;
+  /*box-shadow: 5px 5px 5px 0px #3A3A44;*/
+  box-shadow: 0 9px #999;
+
 }
 button span{
   transition: 0.5s;
@@ -66,20 +106,33 @@ button:hover span:after{
   opacity: 1;
   right: 0;
 }
+button:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(6px);
+}
 
 .question {
   text-align: center;
-  color: red;
   padding-top: 20px;
   color: black;
   font-family: 'Droid Serif', serif;
+  font-size: 40px;
+  /*background-color: #5E7F54;*/
+  /*background-color: light grey;
+  box-shadow: 5px 5px 5px 10px #666;*/
+  width: 700px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+  border-radius: 20px;
+  visibility: hidden;
 
 }
-.input {
-  margin-left: 5px;
-}
+
+
 .question h2{
   color: black;
+  margin: 0 auto;
 }
 
 p {
@@ -90,14 +143,29 @@ p {
   margin: 50px 10px 50px 10px;
   font-size: 50pt;
   color: black;
+  font-family: Impact, Charcoal, sans-serif;
 }
 #scoreBox{
-  float:right;
+  /*float:right;*/
   margin: 0 100px 0 0;
 }
 #time {
-  float:left;
-  margin: 0 0 0 100px;
+  /*float:left;*/
+  margin: 0 0 0 90px;
+}
+
+#input.input {
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 10px;
+  font-family: 'Droid Serif', serif;
+  font-size: 20px;
+}
+
+#submit {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 
