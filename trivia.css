@@ -44,7 +44,6 @@ p2#directionMovie {
   visibility: hidden;
   font-family: cursive, 'Droid Serif', serif;
   font-size: 18px;
-
 }
 
 p2#directionGeo {
@@ -133,6 +132,9 @@ button:active{
 .question h2{
   color: black;
   margin: 0 auto;
+}
+.question p2{
+
 }
 
 p {
