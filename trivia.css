@@ -40,6 +40,8 @@ header h2{
   margin-top: 10px;
 }
 
+
+/*I think these 3 Ids can be consolidated into one class */
 p2#directionMovie {
   visibility: hidden;
   font-family: cursive, 'Droid Serif', serif;

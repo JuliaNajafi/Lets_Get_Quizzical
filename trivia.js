@@ -57,6 +57,7 @@ $(document).ready(function(){
   //start the timer
   //categoryButton.on("click", startTimer);
 
+// Sean:  You can use 'this' function to eliminate all the mouseover repeats
   $("button#movies").on("mouseover", function(){
     $("p2#directionMovie").css("visibility", "visible");
   });
@@ -84,6 +85,7 @@ $(document).ready(function(){
   $(".categories button").on("click", categoryClick);
 
 
+//Sean:  You have functions in side of a function.  Maybe we can break it up so it's easier for the reader to understand.
   function categoryClick (){
     $("div.question").css("visibility", "visible");
     $("#container").css("background-color", "rgb(244,52,64)");
